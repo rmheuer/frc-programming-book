@@ -3,3 +3,6 @@ authors = ["rmheuer"]
 language = "en"
 src = "src"
 title = "FRC Programming Book"
+
+[output.html]
+site-url = "/frc-programming-book/"
