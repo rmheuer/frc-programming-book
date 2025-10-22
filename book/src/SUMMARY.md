@@ -1,17 +1,16 @@
 # Summary
 
-[Introduction]()
+[Introduction](introduction.md)
 
-# Programming Guide
+# Programming the Robot
 
+- [Setting Up the Robot Project](project_setup.md)
 - [Command-based Programming Overview]()
-- [Our Hypothetical Robot]()
-- [Subsystems]()
-  - [Drive Base]()
-  - [Intake]()
-  - [Indexer]()
-  - [Shooter]()
-  - [Climber]()
+- [Drive Base]()
+- [Intake]()
+- [Indexer]()
+- [Shooter]()
+- [Climber]()
 - [Autonomous]()
 
 # Advanced Topics
