@@ -48,4 +48,5 @@ which contains the Java source files, which are your actual code.
 
 ## Code
 
-The empty project from this section can be found [here](TODO).
+The empty project from this section can be found
+[here](https://github.com/rmheuer/frc-programming-book/tree/main/code/chapter01).
