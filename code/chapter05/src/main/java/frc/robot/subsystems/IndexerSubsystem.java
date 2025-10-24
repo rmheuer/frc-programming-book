@@ -18,7 +18,7 @@ public class IndexerSubsystem extends SubsystemBase {
   private final DigitalInput beamBreakInput;
 
   public IndexerSubsystem() {
-    motor = new TalonFX(7);
+    motor = new TalonFX(6);
 
     // The number parameter here is the DIO port on the RoboRIO
     // that the beam break sensor is wired to.

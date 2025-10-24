@@ -12,30 +12,30 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class ShooterSubsystem extends SubsystemBase {
     private static final double SHOOT_VOLTAGE = 6.0;
 
-    private final TalonFX motor;
+    private final TalonFX flywheelMotor;
 
     public ShooterSubsystem() {
-        motor = new TalonFX(8);
+        flywheelMotor = new TalonFX(5);
 
         // Set the motor to coast mode so that it can spin down slowly
         // when stopping.
-        TalonFXConfiguration motorConfig = new TalonFXConfiguration();
-        motorConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
+        TalonFXConfiguration flywheelConfig = new TalonFXConfiguration();
+        flywheelConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
 
         // Send the configuration to the motor controller.
-        motor.getConfigurator().apply(motorConfig);
+        flywheelMotor.getConfigurator().apply(flywheelConfig);
     }
 
     public Command idle() {
         return this.run(() -> {
             // Stop the flywheel to conserve battery power.
-            motor.setControl(new NeutralOut());
+            flywheelMotor.setControl(new NeutralOut());
         });
     }
 
     public Command spinFlywheel() {
         return this.run(() -> {
-            motor.setControl(new VoltageOut(SHOOT_VOLTAGE));
+            flywheelMotor.setControl(new VoltageOut(SHOOT_VOLTAGE));
         });
     }
 }

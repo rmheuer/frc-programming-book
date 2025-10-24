@@ -212,7 +212,7 @@ The number parameter to `CommandXboxController` is the port that the controller 
 to in Driver Station. Typically port 0 is used for the driver controller, and port 1 is
 used for the operator controller. However, right now we only need one controller, so
 we'll use port 0.
-
+g
 ![FRC Driver Station controllers tab](assets/ch3/ds_controllers_tab.png)
 
 Next, we'll link together the controller inputs and the drive base subsystem inputs:

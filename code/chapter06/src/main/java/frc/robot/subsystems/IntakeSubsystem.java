@@ -22,8 +22,8 @@ public class IntakeSubsystem extends SubsystemBase {
   private final TalonFX pivotMotor;
 
   public IntakeSubsystem() {
-    rollerMotor = new TalonFX(5);
-    pivotMotor = new TalonFX(6);
+    rollerMotor = new TalonFX(7);
+    pivotMotor = new TalonFX(8);
 
     // Set the roller to coast mode, since it doesn't need to hold
     // anything in place.
