@@ -194,21 +194,21 @@ need the controller itself:
 
 ```java
 // ...
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class RobotContainer {
-  private final XboxController driverController;
+  private final CommandXboxController driverController;
   // ...
   public RobotContainer() {
     // The number parameter here is the port of the controller in Driver Station.
-    driverController = new XboxController(0);
+    driverController = new CommandXboxController(0);
     // ...
   }
   // ...
 }
 ```
 
-The number parameter to `XboxController` is the port that the controller is connected
+The number parameter to `CommandXboxController` is the port that the controller is connected
 to in Driver Station. Typically port 0 is used for the driver controller, and port 1 is
 used for the operator controller. However, right now we only need one controller, so
 we'll use port 0.

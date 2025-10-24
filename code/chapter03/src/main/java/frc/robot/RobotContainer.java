@@ -5,18 +5,18 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.DriveSubsystem;
 
 public class RobotContainer {
-  private final XboxController driverController;
+  private final CommandXboxController driverController;
   private final DriveSubsystem driveBase;
 
   public RobotContainer() {
     // The number parameter here is the port of the controller in Driver Station.
-    driverController = new XboxController(0);
+    driverController = new CommandXboxController(0);
     driveBase = new DriveSubsystem();
 
     configureBindings();
