@@ -30,9 +30,11 @@ author!
 
 Our robot in this tutorial will use CTRE hardware, so we will need to add CTRE's
 vendor library dependency. To do this, open the WPILIB Vendor Dependencies tab
-in the side bar, and install "CTRE-Phoenix (v6)".
+in the side bar, and install "CTRE-Phoenix (v6)". Since the drive base uses
+the older TalonSRX motor controllers, we will also need "CTRE-Phoenix (v5)"
+dependency as the v6 API does not support them.
 
-![Phoenix v6 vendordep in WPILIB Vendor Dependencies tab](assets/ch1/phoenix6_vendordep.png)
+![Phoenix vendordeps in WPILIB Vendor Dependencies tab](assets/ch1/phoenix_vendordeps.png)
 
 If you are using REV Robotics hardware (besides the PDH), you will need to
 install the "REVLib" vendor dependency as well. However, we will not need it for
