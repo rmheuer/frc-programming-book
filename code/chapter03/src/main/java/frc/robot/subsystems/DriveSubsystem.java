@@ -36,6 +36,15 @@ public class DriveSubsystem extends SubsystemBase {
       double leftWheels = forward + turn;
       double rightWheels = -forward + turn;
 
+      // Desaturate wheel speeds if needed.
+      double maxOutput = Math.max(Math.abs(leftWheels), Math.abs(rightWheels));
+      if (maxOutput > 1.0) {
+        // Too fast! Our motor controllers aren't capable of this speed, so we
+        // need to slow it down.
+        leftWheels = leftWheels / maxOutput;
+        rightWheels = rightWheels / maxOutput;
+      }
+
       // Tell the motor controllers to spin the motors!
       leftMotor1.set(ControlMode.PercentOutput, leftWheels);
       leftMotor2.set(ControlMode.PercentOutput, leftWheels);
