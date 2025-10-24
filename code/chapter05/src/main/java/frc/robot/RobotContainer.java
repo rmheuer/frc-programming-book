@@ -8,16 +8,17 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 public class RobotContainer {
   private final CommandXboxController driverController;
   private final CommandXboxController operatorController;
 
   private final DriveSubsystem driveBase;
-  private final IntakeSubsystem intake;
+  private final ShooterSubsystem shooter;
   private final IndexerSubsystem indexer;
 
   public RobotContainer() {
@@ -26,7 +27,7 @@ public class RobotContainer {
     operatorController = new CommandXboxController(1);
 
     driveBase = new DriveSubsystem();
-    intake = new IntakeSubsystem();
+    shooter = new ShooterSubsystem();
     indexer = new IndexerSubsystem();
 
     configureBindings();
@@ -38,12 +39,19 @@ public class RobotContainer {
         () -> MathUtil.applyDeadband(-driverController.getLeftY(), 0.1),
         () -> MathUtil.applyDeadband(driverController.getRightX(), 0.1)));
 
+    // Put the shooter flywheel in idle by default to save battery power.
+    shooter.setDefaultCommand(shooter.idle());
+
+    // Bind the flywheels to the left trigger on the operator controller.
+    // Use a Trigger to convert the analog input into a digital (boolean) one.
+    new Trigger(() -> (operatorController.getLeftTriggerAxis() > 0.5))
+        .whileTrue(shooter.spinFlywheel());
+
     // Put the indexer in idle when nothing else is using it.
     indexer.setDefaultCommand(indexer.idle());
 
-    // Bind the intake extension to the A button on the operator controller.
+    // Bind the intake control to the A button on the operator controller.
     operatorController.a()
-        .whileTrue(intake.extend())
         .whileTrue(indexer.receivePieceFromIntake());
 
     // Bind the shoot control to the B button on the operator controller.

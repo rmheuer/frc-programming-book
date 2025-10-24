@@ -45,28 +45,28 @@ public class RobotContainer {
         () -> MathUtil.applyDeadband(-driverController.getLeftY(), 0.1),
         () -> MathUtil.applyDeadband(driverController.getRightX(), 0.1)));
 
-    // Put the indexer in idle when nothing else is using it.
-    indexer.setDefaultCommand(indexer.idle());
-
-    // Also put the shooter in idle by default.
+    // Put the shooter flywheel in idle by default to save battery power.
     shooter.setDefaultCommand(shooter.idle());
-
-    // Keep the climber arms down by default.
-    climber.setDefaultCommand(climber.retract());
-
-    // Bind the intake extension to the A button on the operator controller.
-    operatorController.a()
-        .whileTrue(intake.extend())
-        .whileTrue(indexer.receivePieceFromIntake());
-
-    // Bind the shoot control to the B button on the operator controller.
-    operatorController.b()
-        .whileTrue(indexer.feedPieceToShooter());
 
     // Bind the flywheels to the left trigger on the operator controller.
     // Use a Trigger to convert the analog input into a digital (boolean) one.
     new Trigger(() -> (operatorController.getLeftTriggerAxis() > 0.5))
         .whileTrue(shooter.spinFlywheel());
+
+    // Put the indexer in idle when nothing else is using it.
+    indexer.setDefaultCommand(indexer.idle());
+
+    // Bind the intake control to the A button on the operator controller.
+    operatorController.a()
+        .whileTrue(indexer.receivePieceFromIntake())
+        .whileTrue(intake.extend());
+
+    // Bind the shoot control to the B button on the operator controller.
+    operatorController.b()
+        .whileTrue(indexer.feedPieceToShooter());
+    
+    // Keep the climber arms down by default.
+    climber.setDefaultCommand(climber.retract());
 
     // Bind the climber extension to up on the D-pad. Also allow bringing the
     // arms back down by pressing it again if it gets pressed by accident.

@@ -7,9 +7,9 @@
 - [Setting Up the Robot Project](project_setup.md)
 - [Command-based Programming Overview]()
 - [Drive Base](drive_base.md)
-- [Intake]()
-- [Indexer]()
 - [Shooter]()
+- [Indexer]()
+- [Intake]()
 - [Climber]()
 - [Autonomous]()
 
